@@ -1,15 +1,20 @@
-node-red-contrib-owfs
-=====================
+node-red-contrib-owfs-fix
+=========================
 
 A [Node-RED] node for talking to [1-wire] devices using an [owfs] [owserver] instance.
 
+Why this version update?
+------------------------
+This version fixes a problem in the original node where adding an unknown 1-wire device to the network can result in the node reporting that 0 1-wire devices have been discovered. This was due to the way that the original code didn't handle errors reading from 1-wire devices. The problem was paritally addressed through the blacklist of items which should not to be read from 1-wire devices; however the posibility remains that a new 1-wire device added to the bus may contain a field which causes a read error causing the oringal node to fail. 
+
+This version also rolls up all the fixes to the original node-red-contrib-owfs code which had not yet been released in the node package on npm.
 
 Install
 -------
 
 Run the following command in the root directory of your Node-RED install
 
-    npm install node-red-contrib-owfs
+    npm install node-red-contrib-owfs-fix
 
 
 Usage
@@ -43,8 +48,8 @@ The flow can be downloaded from the Node-Red Flow Library here:
 http://flows.nodered.org/flow/b11cfe3a7728a297e44d
 
 
-Hardare Tested
---------------
+Hardware Tested
+---------------
 
 * [DS18B20 Temperature Sensor](http://www.maximintegrated.com/en/products/DS18B20)
 * [DS9490R USB Host Adapter](http://www.maximintegrated.com/en/products/DS9490R)
